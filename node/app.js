@@ -1,10 +1,12 @@
 import express from "express";
 import cors from 'cors'
 //imp la database
+import env from 'dotenv'
 import db from "./database/db.js"
 
 import blogRoutes from './routes/routes.js'
 
+env.config()
 
 const app = express()
 
@@ -23,7 +25,7 @@ try {
 //     res.send('Hola Mundo 2')
 // })
 
-const puerto = 8000
-app.listen(puerto, () => {
-    console.log(`Servidor corriendo en el puerto http://localhost:${puerto}`)
+
+app.listen(process.env.PORT, () => {
+    console.log(`Servidor corriendo en el puerto http://localhost:${process.env.PORT}`)
 })
